@@ -1,0 +1,5 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/pnirpal/Workspace/ChessEngine/DirtyAttempt'
+g++ -oFast bbc.cpp support.cpp -o bbc 
+make: Leaving directory '/home/pnirpal/Workspace/ChessEngine/DirtyAttempt'
+ 
