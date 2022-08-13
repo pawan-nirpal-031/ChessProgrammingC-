@@ -1,5 +1,5 @@
 all:
-	g++ -oFast bbc.cpp support.cpp -o bbc 
+	g++ -oFast BitBoardChess.cpp Support.cpp -o chess 
 
 debug: 
-	g++ bbc.cpp -o bbc
+	g++ BitBoardChess.cpp Support.cpp -o chess
