@@ -4,7 +4,7 @@
 
 int main(){
     U64 board = 0ULL; 
-    board = 9;
-    PrintBitBoard(board);
+    PrintBitBoard(board); 
+    PrintBoardDefFormat();
     return 0;
 }

@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Aug 12 16:51:36 2022
+# Make data base, printed on Sat Aug 13 12:29:56 2022
 
 # Variables
 
@@ -45,11 +45,11 @@ VSCODE_CWD = /mnt/c/Users/panirpal/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/pnirpal/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/Perforce:/mnt/c/Program Files/ServiceNow:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/panirpal/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/panirpal/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Program Files/Microsoft Office/root/Client:/snap/bin
+PATH = /home/pnirpal/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/Perforce:/mnt/c/Program Files/ServiceNow:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/panirpal/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/panirpal/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-ebf20c2a-d2cc-4555-b062-add0a39845dd.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-12a31f1f-1747-4dce-80db-3e9203867863.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -136,8 +136,10 @@ LANG = C
 TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
+# environment
+MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=63/1024=6%, Rehash=0, Collisions=4/91=4%
+# Load=64/1024=6%, Rehash=0, Collisions=4/92=4%
 
 # Pattern-specific Variable Values
 
@@ -145,9 +147,9 @@ WSL_DISTRO_NAME = Ubuntu-20.04
 
 # Directories
 
-# . (device 2064, inode 53930): 8 files, no impossibilities.
+# . (device 2064, inode 53930): 9 files, no impossibilities.
 
-# 8 files, no impossibilities in 1 directories.
+# 9 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -217,12 +219,12 @@ makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 14 / storage = 127 B / avg = 9 B
-# current buf: size = 8162 B / used = 127 B / count = 14 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 15 / storage = 131 B / avg = 8 B
+# current buf: size = 8162 B / used = 131 B / count = 15 / avg = 8 B
 
-# strcache performance: lookups = 22 / hit rate = 36%
+# strcache performance: lookups = 23 / hit rate = 34%
 # hash-table stats:
-# Load=14/8192=0%, Rehash=0, Collisions=1/22=5%
-# Finished Make data base on Fri Aug 12 16:51:36 2022
+# Load=15/8192=0%, Rehash=0, Collisions=1/23=4%
+# Finished Make data base on Sat Aug 13 12:29:56 2022
 
  
