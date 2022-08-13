@@ -1,5 +1,5 @@
 make --dry-run --keep-going --print-directory
 make: Entering directory '/home/pnirpal/Workspace/ChessEngine/DirtyAttempt'
-g++ -oFast BitBoardChess.cpp Support.cpp -o chess 
+g++ -oFast BitBoardChess.cpp -o chess 
 make: Leaving directory '/home/pnirpal/Workspace/ChessEngine/DirtyAttempt'
  

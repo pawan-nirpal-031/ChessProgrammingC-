@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 13 13:19:20 2022
+# Make data base, printed on Sat Aug 13 16:06:49 2022
 
 # Variables
 
@@ -58,6 +58,7 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 %F = $(notdir $%)
 # environment
 PWD = /home/pnirpal/Workspace/ChessEngine/DirtyAttempt
+ 
 # default
 .LOADED := 
 # environment
@@ -147,9 +148,9 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2064, inode 53930): 9 files, no impossibilities.
+# . (device 2064, inode 53930): 14 files, no impossibilities.
 
-# 9 files, no impossibilities in 1 directories.
+# 14 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -183,7 +184,7 @@ all:
 # variable set hash-table stats:
 # Load=8/32=25%, Rehash=0, Collisions=1/11=9%
 #  recipe to execute (from 'makefile', line 2):
-	g++ -oFast BitBoardChess.cpp Support.cpp -o chess 
+	g++ -oFast BitBoardChess.cpp -o chess 
 
 # Not a target:
 .SUFFIXES:
@@ -196,12 +197,12 @@ debug:
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'makefile', line 5):
-	g++ BitBoardChess.cpp Support.cpp -o chess
+	g++ BitBoardChess.cpp -o chess
 
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-13 13:18:56.163215103
+#  Last modified 2022-08-13 16:06:48.473290085
 #  File has been updated.
 #  Successfully updated.
 
@@ -219,12 +220,12 @@ makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 15 / storage = 149 B / avg = 9 B
-# current buf: size = 8162 B / used = 149 B / count = 15 / avg = 9 B
+# strcache buffers: 1 (0) / strings = 20 / storage = 227 B / avg = 11 B
+# current buf: size = 8162 B / used = 227 B / count = 20 / avg = 11 B
 
-# strcache performance: lookups = 23 / hit rate = 34%
+# strcache performance: lookups = 28 / hit rate = 28%
 # hash-table stats:
-# Load=15/8192=0%, Rehash=0, Collisions=1/23=4%
-# Finished Make data base on Sat Aug 13 13:19:20 2022
+# Load=20/8192=0%, Rehash=0, Collisions=1/28=4%
+# Finished Make data base on Sat Aug 13 16:06:49 2022
 
  
