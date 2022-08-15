@@ -71,6 +71,15 @@ public:
         }
     }
 
+    static inline int NumberOfSetBits(ull board){
+        int count =0; 
+        while(board){
+            ++count;
+            board &=(board-1);
+        }
+        return count;
+    }
+
 };
 
 #endif

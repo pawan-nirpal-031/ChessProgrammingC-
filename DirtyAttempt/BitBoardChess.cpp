@@ -150,8 +150,8 @@ int main(){
     support.SetBit(block,g4);  
     support.PrintBitBoard(block);
 
-    ull inflight =  attksys.InFlightRookAttackMask(d4,block,support); 
-    support.PrintBitBoard(inflight);
+    // ull inflight =  attksys.InFlightRookAttackMask(d4,block,support); 
+    // support.PrintBitBoard(inflight);
 
     for(int sq =0;sq<64;sq++){
        // support.PrintBitBoard(attksys.king_attack_table[sq]); 
