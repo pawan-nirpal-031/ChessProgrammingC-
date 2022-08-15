@@ -15,24 +15,24 @@ public:
     }
     
     
-    void ToggleBit(U64 &bitBoard,int square){
+    void ToggleBit(ull &bitBoard,int square){
         (bitBoard^=((1ULL<<square)));
     }
 
-    bool GetBit(U64 &bitBoard,int square){
+    bool GetBit(ull &bitBoard,int square){
         return (bitBoard&(1ULL<<square));
     }
 
-    void SetBit(U64 &bitBoard, int square){
+    void SetBit(ull &bitBoard, int square){
         if((bitBoard)&(1ULL<<square)) return;
         (bitBoard|=(1ULL<<square));
     } 
 
-    void ClearBit(U64 &bitBoard,int square){
+    void ClearBit(ull &bitBoard,int square){
         if(GetBit(bitBoard,square)) ToggleBit(bitBoard,square);
     }
 
-    void PrintBitBoard(U64 &bitBoard){ 
+    void PrintBitBoard(ull &bitBoard){ 
         cout<<"\n\n";
         for(int rank =0;rank<N;rank++){
             for(int file =0;file<N;file++){
@@ -47,7 +47,7 @@ public:
     } 
 
     
-    void PrintBitBoardMemoryRepresentation(U64 &bitBoard){ 
+    void PrintBitBoardMemoryRepresentation(ull &bitBoard){ 
         cout<<"\n";
         int Bytes = 8; 
         int bitlvl = 8;
