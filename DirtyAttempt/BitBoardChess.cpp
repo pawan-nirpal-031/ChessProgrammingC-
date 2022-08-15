@@ -73,6 +73,16 @@ public:
         for(int tar_rank = rank-1,tar_file = file-1; (tar_rank>=1 and tar_file>=1); tar_file--, tar_rank--)  attacks|=(1ULL<<supp_bot.GetSqaure(tar_rank,tar_file));
         for(int tar_rank = rank+1,tar_file = file-1; (tar_rank<7 and tar_file >=1); tar_file--, tar_rank++)  attacks|=(1ULL<<supp_bot.GetSqaure(tar_rank,tar_file));
         return attacks;
+    } 
+
+    U64 RookAttackMask(int square,SupportAndUtils &supp_bot){
+        U64 attacks = 0ULL; 
+        int rank = square / 8,file = square % 8; 
+        for(int tar_file = file+1; (tar_file <7); tar_file++)  attacks|=(1ULL<<supp_bot.GetSqaure(rank,tar_file));
+        for(int tar_file = file-1; (tar_file >=1); tar_file--)  attacks|=(1ULL<<supp_bot.GetSqaure(rank,tar_file));
+        for(int tar_rank = rank+1; (tar_rank <7); tar_rank++)  attacks|=(1ULL<<supp_bot.GetSqaure(tar_rank,file));
+        for(int tar_rank = rank-1; (tar_rank >=1); tar_rank--)  attacks|=(1ULL<<supp_bot.GetSqaure(tar_rank,file));
+        return attacks;
     }
 
 };
@@ -83,7 +93,7 @@ int main(){
     AttackSystem attksys(support); 
     for(int sq =0;sq<64;sq++){
        // support.PrintBitBoard(attksys.king_attack_table[sq]); 
-       U64 board =  attksys.BishopAttackMask(sq,support);
+       U64 board =  attksys.RookAttackMask(sq,support);
        support.PrintBitBoard(board);
     }
     return 0;
