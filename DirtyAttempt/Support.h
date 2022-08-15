@@ -4,6 +4,8 @@
 #include "SystemUtils.h"
 #include "ConstDefns.h"
 
+
+
 class SupportAndUtils{
 public:
     
@@ -80,6 +82,10 @@ public:
         return count;
     }
 
+    static inline int LeastSigBitIndex(ull board){
+        if(board) return NumberOfSetBits((board & -board)-1);
+        return -1;
+    }
 };
 
 #endif

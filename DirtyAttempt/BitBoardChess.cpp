@@ -153,6 +153,9 @@ int main(){
     // ull inflight =  attksys.InFlightRookAttackMask(d4,block,support); 
     // support.PrintBitBoard(inflight);
 
+    int indx = SupportAndUtils::LeastSigBitIndex(block); 
+    cout<<PositionToIndexMap[indx];
+    
     for(int sq =0;sq<64;sq++){
        // support.PrintBitBoard(attksys.king_attack_table[sq]); 
       // ull board =  attksys.InFlightBishopAttackMask(sq,support);
