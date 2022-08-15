@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Aug 13 16:06:49 2022
+# Make data base, printed on Mon Aug 15 12:16:13 2022
 
 # Variables
 
@@ -49,7 +49,7 @@ PATH = /home/pnirpal/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-12a31f1f-1747-4dce-80db-3e9203867863.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-6021fd2c-aaaf-4dad-9f1e-104fe24a81a9.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -58,7 +58,6 @@ LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:
 %F = $(notdir $%)
 # environment
 PWD = /home/pnirpal/Workspace/ChessEngine/DirtyAttempt
- 
 # default
 .LOADED := 
 # environment
@@ -148,9 +147,9 @@ MOTD_SHOWN = update-motd
 
 # Directories
 
-# . (device 2064, inode 53930): 14 files, no impossibilities.
+# . (device 2064, inode 53930): 10 files, no impossibilities.
 
-# 14 files, no impossibilities in 1 directories.
+# 10 files, no impossibilities in 1 directories.
 
 # Implicit Rules
 
@@ -220,12 +219,12 @@ makefile:
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 1 (0) / strings = 20 / storage = 227 B / avg = 11 B
-# current buf: size = 8162 B / used = 227 B / count = 20 / avg = 11 B
+# strcache buffers: 1 (0) / strings = 16 / storage = 157 B / avg = 9 B
+# current buf: size = 8162 B / used = 157 B / count = 16 / avg = 9 B
 
-# strcache performance: lookups = 28 / hit rate = 28%
+# strcache performance: lookups = 24 / hit rate = 33%
 # hash-table stats:
-# Load=20/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sat Aug 13 16:06:49 2022
+# Load=16/8192=0%, Rehash=0, Collisions=1/24=4%
+# Finished Make data base on Mon Aug 15 12:16:13 2022
 
  
