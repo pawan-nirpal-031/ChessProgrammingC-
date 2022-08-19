@@ -129,12 +129,22 @@ public:
             attacks|=(1ULL<<tar_sq);
             if((1ULL<<tar_sq) & blocker) break;
         }
-        for(int tar_rank = rank-1; (tar_rank >=0); tar_rank--) {
+        for(int tar_rank = rank-1; (tar_rank >=0); tar_rank--){
             int tar_sq = supp_bot.GetSqaure(tar_rank,file);
             attacks|=(1ULL<<tar_sq);
             if((1ULL<<tar_sq) & blocker) break;
         }
         return attacks;
+    } 
+
+    ull SetOccupancy(int indx,int bit_count_mask,ull attack_mask, SupportAndUtils &support){
+        ull occupancy_map = 0ull; 
+        for(int count =0;count<bit_count_mask;count++){
+            int sq = support.LeastSigBitIndex(attack_mask); 
+            support.ClearBit(attack_mask,sq);
+            if(indx & (1<<count)) occupancy_map|=(1ull<<sq);
+        }
+        return occupancy_map; 
     }
 };
 
@@ -142,24 +152,16 @@ public:
 int main(){
     SupportAndUtils support; 
     AttackSystem attksys(support);  
-    ull block = 0ull;  
-    support.SetBit(block,d7); 
-    support.SetBit(block,d1);
-    support.SetBit(block,d2);
-    support.SetBit(block,b4); 
-    support.SetBit(block,g4);  
-    support.PrintBitBoard(block);
-
-    // ull inflight =  attksys.InFlightRookAttackMask(d4,block,support); 
-    // support.PrintBitBoard(inflight);
-
-    int indx = SupportAndUtils::LeastSigBitIndex(block); 
-    cout<<PositionToIndexMap[indx];
-    
-    for(int sq =0;sq<64;sq++){
-       // support.PrintBitBoard(attksys.king_attack_table[sq]); 
-      // ull board =  attksys.InFlightBishopAttackMask(sq,support);
-     //  support.PrintBitBoard(board);
-    }
+    ull bb = (ull)support.GetRandomU32bitnumber(); 
+    bb = (bb & 0xFFFF);
+	support.PrintBitBoard(bb); 
+    ull bb1 = support.GetRandomU64Numbers(); 
+    ull bb2 = support.GetRandomU64Numbers(); 
+    ull bb3 = support.GetRandomU64Numbers(); 
+    ull bb4 = support.GetRandomU64Numbers(); 
+    ull cand = (ull)(bb1 & bb2 & bb3 & bb4);
+    support.PrintBitBoard(cand); 
+    ull cand2 = support.GenerateMagicNumberCandidate(); 
+    support.PrintBitBoard(cand2);
     return 0;
 }
