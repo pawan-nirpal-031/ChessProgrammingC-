@@ -14,10 +14,16 @@ class AttackSystem{
 public:
     ull pawn_attack_table[2][64];  
     ull knight_attack_table[64];      
-    ull king_attack_table[64];           
+    ull king_attack_table[64];        
+    ull bishop_attack_masks[64]; 
+    ull rook_attack_masks[64]; 
+    ull bishop_attack_tables[64][512]; // [sqaure][occupancies]  
+    ull rook_attack_tables[64][4096];
 
     AttackSystem(SupportAndUtils &supp_bot){
         InitLeaperAttacks(supp_bot);
+        InitSliderPiecesTables(bishop,supp_bot); 
+        InitSliderPiecesTables(rook,supp_bot);
        // InitMagicNumbers(supp_bot);
     }
 
@@ -186,6 +192,41 @@ public:
             printf(" 0x%llxULL,\n",FindMagicNumber(i,bishop_relevant_occupancy_bits[i],bishop,supp)); 
             bishop_magic_numbers[i] = FindMagicNumber(i,bishop_relevant_occupancy_bits[i],bishop,supp); 
         }
+    } 
+
+    void InitSliderPiecesTables(int bishop_,SupportAndUtils &supp){
+        for(int sq =0;sq<64;sq++){
+            bishop_attack_masks[sq] = BishopAttackMask(sq,supp); 
+            rook_attack_masks[sq] = RookAttackMask(sq,supp); 
+            ull attack_mask = bishop_?bishop_attack_masks[sq]:rook_attack_masks[sq]; 
+            int relevent_bits_count = supp.NumberOfSetBits(attack_mask); 
+            int occupancy_indices = (1 << relevent_bits_count);
+            for(int indx =0;indx<occupancy_indices;indx++){
+                if(bishop_){
+                    ull occpancy = SetOccupancy(indx,relevent_bits_count,attack_mask,supp); 
+                    int magic_indx = (occpancy*bishop_magic_numbers[sq])>>(64-bishop_relevant_occupancy_bits[sq]);
+                    bishop_attack_tables[sq][magic_indx] = InFlightBishopAttackMask(sq,occpancy,supp);
+                }else{
+                    ull occpancy = SetOccupancy(indx,relevent_bits_count,attack_mask,supp); 
+                    int magic_indx = (occpancy*rook_magic_numbers[sq])>>(64-rook_relevant_occupancy_bits[sq]);
+                    rook_attack_tables[sq][magic_indx] = InFlightRookAttackMask(sq,occpancy,supp);
+                }
+            }
+        }
+    }
+
+    inline ull GetBishopAttacks(int sq,ull occupancy){
+        occupancy&=bishop_attack_masks[sq]; 
+        occupancy*=bishop_magic_numbers[sq];
+        occupancy>>=(64-bishop_relevant_occupancy_bits[sq]);
+        return bishop_attack_tables[sq][occupancy];
+    }
+
+    inline ull GetRookAttacks(int sq,ull occupancy){
+        occupancy&=rook_attack_masks[sq]; 
+        occupancy*=rook_magic_numbers[sq];
+        occupancy>>=(64-rook_relevant_occupancy_bits[sq]);
+        return rook_attack_tables[sq][occupancy];
     }
 };
 
@@ -193,6 +234,11 @@ public:
 int main(){
     SupportAndUtils support; 
     AttackSystem attksys(support);  
+
+    ull occpancy = support.GetOccupancyBoard({c5,f2,g7,b2,g5,e2,e7});  
+    support.PrintBitBoard(occpancy);
+    ull batts = attksys.GetRookAttacks(e5,occpancy); 
+    support.PrintBitBoard(batts);
 
     return 0;
 }

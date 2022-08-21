@@ -106,6 +106,14 @@ public:
     static inline int LeastSigBitIndex(ull board){
         if(board) return NumberOfSetBits((board & -board)-1);
         return -1;
+    } 
+
+    ull GetOccupancyBoard(vector<int>blocking){
+        ull occupancy = 0ull; 
+        for(int &x : blocking){
+            SetBit(occupancy,x);
+        }
+        return occupancy;
     }
 };
 
