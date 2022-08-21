@@ -61,7 +61,7 @@ public:
 
     ull GetRandomU64Numbers(){
         ull nums[4]; 
-        for(int i=0;i<4;i++) nums[i] = (ull)(GetRandomU32bitnumber() & 0xFFFF);
+        for(int i=0;i<4;i++) nums[i] = ((ull)(GetRandomU32bitnumber()) & 0xFFFF);
         return (nums[0] | (nums[1]<<16) | (nums[2]<<32) | (nums[4]<<48));
     } 
 

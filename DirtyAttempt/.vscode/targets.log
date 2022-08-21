@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Aug 15 12:16:13 2022
+# Make data base, printed on Sun Aug 21 21:15:18 2022
 
 # Variables
 
@@ -31,7 +31,7 @@ SHELL = /bin/sh
 # environment
 VSCODE_NLS_CONFIG = {"locale":"en","availableLanguages":{}}
 # environment
-_ = /home/pnirpal/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/node
+_ = /home/pnirpal/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/node
 # makefile (from 'makefile', line 1)
 MAKEFILE_LIST :=  makefile
 # 'override' directive
@@ -45,11 +45,11 @@ VSCODE_CWD = /mnt/c/Users/panirpal/AppData/Local/Programs/Microsoft VS Code
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /home/pnirpal/.vscode-server/bin/6d9b74a70ca9c7733b29f0456fd8195364076dda/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/Perforce:/mnt/c/Program Files/ServiceNow:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/panirpal/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/panirpal/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
+PATH = /home/pnirpal/.vscode-server/bin/e4503b30fc78200f846c62cf8091b76ff5547662/bin/remote-cli:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/ProgramData/Oracle/Java/javapath:/mnt/c/windows/system32:/mnt/c/windows:/mnt/c/windows/System32/Wbem:/mnt/c/windows/System32/WindowsPowerShell/v1.0/:/mnt/c/windows/System32/OpenSSH/:/mnt/c/Program Files/Perforce:/mnt/c/Program Files/ServiceNow:/mnt/c/Program Files/PuTTY/:/mnt/c/Users/panirpal/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/panirpal/AppData/Local/Programs/Microsoft VS Code/bin:/snap/bin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-6021fd2c-aaaf-4dad-9f1e-104fe24a81a9.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-5c3f5ac1-bd80-4225-a4af-47aa8d9edfa9.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -136,10 +136,8 @@ LANG = C
 TERM = xterm-256color
 # environment
 WSL_DISTRO_NAME = Ubuntu-20.04
-# environment
-MOTD_SHOWN = update-motd
 # variable set hash-table stats:
-# Load=64/1024=6%, Rehash=0, Collisions=4/92=4%
+# Load=63/1024=6%, Rehash=0, Collisions=4/91=4%
 
 # Pattern-specific Variable Values
 
@@ -201,7 +199,7 @@ debug:
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-13 16:06:48.473290085
+#  Last modified 2022-08-15 21:15:28.858958832
 #  File has been updated.
 #  Successfully updated.
 
@@ -225,6 +223,6 @@ makefile:
 # strcache performance: lookups = 24 / hit rate = 33%
 # hash-table stats:
 # Load=16/8192=0%, Rehash=0, Collisions=1/24=4%
-# Finished Make data base on Mon Aug 15 12:16:13 2022
+# Finished Make data base on Sun Aug 21 21:15:18 2022
 
  

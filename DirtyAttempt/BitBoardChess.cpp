@@ -4,8 +4,8 @@ class AttackSystem{
 
     void InitLeaperAttacks(SupportAndUtils &supp_bot){
         for(int sq =0;sq<64;sq++){
-            pawn_attack_table[white][sq] = this->PawanAttackMask(white,sq,supp_bot);
-            pawn_attack_table[black][sq] = this->PawanAttackMask(black,sq,supp_bot); 
+            pawn_attack_table[white][sq] = this->PawnAttackMask(white,sq,supp_bot);
+            pawn_attack_table[black][sq] = this->PawnAttackMask(black,sq,supp_bot); 
             knight_attack_table[sq] = this->KnightAttackMask(sq,supp_bot);
             king_attack_table[sq] = this->KingAttackMask(sq,supp_bot);
         }
@@ -20,7 +20,7 @@ public:
         InitLeaperAttacks(supp_bot);
     }
 
-    ull PawanAttackMask(int side,int square, SupportAndUtils &supp_bot){      
+    ull PawnAttackMask(int side,int square, SupportAndUtils &supp_bot){      
         ull attacks = 0ULL;                         
         ull pawn_bit_board = 0ULL;                  
         supp_bot.SetBit(pawn_bit_board,square);  
@@ -145,6 +145,40 @@ public:
             if(indx & (1<<count)) occupancy_map|=(1ull<<sq);
         }
         return occupancy_map; 
+    } 
+
+    ull FindMagicNumber(int sq,int relevent_bits,int bishop_,SupportAndUtils &supp){
+        ull occupancies[4096];
+        ull attacks[4096];
+        ull used_attacks[4096]; 
+        ull attack_mask = (bishop_?BishopAttackMask(sq,supp):RookAttackMask(sq,supp)); 
+        int occupancy_indices = (1<<relevent_bits); 
+        for(int i =0;i<occupancy_indices;i++){
+            occupancies[i] = SetOccupancy(i,relevent_bits,attack_mask,supp);
+            attacks[i] = bishop_?InFlightBishopAttackMask(sq,occupancies[i],supp):InFlightRookAttackMask(sq,occupancies[i],supp); 
+        }
+        for(int rand_cnt = 0;rand_cnt<100000000;rand_cnt++){
+            ull magic_num  = supp.GenerateMagicNumberCandidate(); 
+            if(supp.NumberOfSetBits(((attack_mask)*magic_num)  & 0xFF00000000000000) <6) continue; 
+            memset(used_attacks,0ull,sizeof(used_attacks));
+            int indx,fail; 
+            for(indx =0,fail =0;!fail and indx<occupancy_indices;indx++){
+                int magic_indx =(int)((occupancies[indx]*magic_num)>>(64-relevent_bits));
+                if(used_attacks[magic_indx]==0ull){
+                    used_attacks[magic_indx] = attacks[indx];
+                }else if(used_attacks[magic_indx]!=attacks[indx]){
+                    fail = 1;
+                }
+            }
+            if(not fail) return magic_num;
+        }
+        return 0ull;
+    }
+
+    void InitMagicNumbers(SupportAndUtils &supp){
+        // for(int i =0;i<64;i++){
+        //     printf(" 0x%lluxULL\n",FindMagicNumber(i,)); 
+        // }
     }
 };
 
@@ -152,16 +186,12 @@ public:
 int main(){
     SupportAndUtils support; 
     AttackSystem attksys(support);  
-    ull bb = (ull)support.GetRandomU32bitnumber(); 
-    bb = (bb & 0xFFFF);
-	support.PrintBitBoard(bb); 
-    ull bb1 = support.GetRandomU64Numbers(); 
-    ull bb2 = support.GetRandomU64Numbers(); 
-    ull bb3 = support.GetRandomU64Numbers(); 
-    ull bb4 = support.GetRandomU64Numbers(); 
-    ull cand = (ull)(bb1 & bb2 & bb3 & bb4);
-    support.PrintBitBoard(cand); 
-    ull cand2 = support.GenerateMagicNumberCandidate(); 
-    support.PrintBitBoard(cand2);
+    for(int r =0;r<8;r++){
+        for(int f =0;f<8;f++){
+            int sq = support.GetSqaure(r,f); 
+            cout<<support.NumberOfSetBits(attksys.RookAttackMask(sq,support))<<", ";
+        } 
+        cout<<'\n';
+    }
     return 0;
 }
