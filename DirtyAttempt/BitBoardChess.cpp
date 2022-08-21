@@ -18,6 +18,7 @@ public:
 
     AttackSystem(SupportAndUtils &supp_bot){
         InitLeaperAttacks(supp_bot);
+       // InitMagicNumbers(supp_bot);
     }
 
     ull PawnAttackMask(int side,int square, SupportAndUtils &supp_bot){      
@@ -156,7 +157,7 @@ public:
         for(int i =0;i<occupancy_indices;i++){
             occupancies[i] = SetOccupancy(i,relevent_bits,attack_mask,supp);
             attacks[i] = bishop_?InFlightBishopAttackMask(sq,occupancies[i],supp):InFlightRookAttackMask(sq,occupancies[i],supp); 
-        }
+        } 
         for(int rand_cnt = 0;rand_cnt<100000000;rand_cnt++){
             ull magic_num  = supp.GenerateMagicNumberCandidate(); 
             if(supp.NumberOfSetBits(((attack_mask)*magic_num)  & 0xFF00000000000000) <6) continue; 
@@ -175,10 +176,16 @@ public:
         return 0ull;
     }
 
-    void InitMagicNumbers(SupportAndUtils &supp){
-        // for(int i =0;i<64;i++){
-        //     printf(" 0x%lluxULL\n",FindMagicNumber(i,)); 
-        // }
+    void InitMagicNumbers(SupportAndUtils &supp){ 
+        for(int i =0;i<64;i++){
+            printf(" 0x%llxULL,\n",FindMagicNumber(i,rook_relevant_occupancy_bits[i],rook,supp));  
+            rook_magic_numbers[i] = FindMagicNumber(i,rook_relevant_occupancy_bits[i],rook,supp);
+        } 
+        cout<<"\n\n";
+        for(int i =0;i<64;i++){ 
+            printf(" 0x%llxULL,\n",FindMagicNumber(i,bishop_relevant_occupancy_bits[i],bishop,supp)); 
+            bishop_magic_numbers[i] = FindMagicNumber(i,bishop_relevant_occupancy_bits[i],bishop,supp); 
+        }
     }
 };
 
@@ -186,12 +193,6 @@ public:
 int main(){
     SupportAndUtils support; 
     AttackSystem attksys(support);  
-    for(int r =0;r<8;r++){
-        for(int f =0;f<8;f++){
-            int sq = support.GetSqaure(r,f); 
-            cout<<support.NumberOfSetBits(attksys.RookAttackMask(sq,support))<<", ";
-        } 
-        cout<<'\n';
-    }
+
     return 0;
 }

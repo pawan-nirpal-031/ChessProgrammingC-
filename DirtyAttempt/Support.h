@@ -48,32 +48,25 @@ public:
         printf("\n   BitBoard : %llud\n\n",bitBoard);
     }   
 
-    unsigned int state = 1804289383;
+    unsigned int random_state = 1804289383;
 
     unsigned int GetRandomU32bitnumber(){
-        unsigned int num = state; 
+        unsigned int num = random_state; 
         num^=(num<<13); 
         num^=(num>>17);
         num^=(num<<5);  
-        state = num; 
+        random_state = num; 
         return num; 
     } 
 
     ull GetRandomU64Numbers(){
         ull nums[4]; 
         for(int i=0;i<4;i++) nums[i] = ((ull)(GetRandomU32bitnumber()) & 0xFFFF);
-        return (nums[0] | (nums[1]<<16) | (nums[2]<<32) | (nums[4]<<48));
+        return (nums[0] | (nums[1]<<16) | (nums[2]<<32) | (nums[3]<<48));
     } 
 
-    ull GenerateMagicNumberCandidate(int depth=3){
-        assert(depth>=1);
-        ull candidate = 0xFFFFFFFFFFFFFFFF; 
-        ull magicgen[depth]; 
-        for(int i =0;i<depth;i++){
-            magicgen[i] = GetRandomU64Numbers(); 
-            candidate&=(magicgen[i]);
-        }
-        return candidate;
+    ull GenerateMagicNumberCandidate(){
+        return (GetRandomU64Numbers() & GetRandomU64Numbers() & GetRandomU64Numbers());
     }
 
     
