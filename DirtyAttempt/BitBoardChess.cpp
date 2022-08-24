@@ -2,7 +2,15 @@
 
 class AttackSystem{
 
-    void InitLeaperAttacks(SupportAndUtils &supp_bot){
+    void ConstantInializations(){
+        side = -1;
+        castle = 0;
+        enpessant = no_sq;
+        for(int i =0;i<12;i++) piece_bitboards[i] = 0ull;
+        occupancy[0] = occupancy[1] = occupancy[2] = 0ull;
+    }
+
+    void InitLeaperAttacks(SupportAndUtils &supp_bot){ 
         for(int sq =0;sq<64;sq++){
             pawn_attack_table[white][sq] = this->PawnAttackMask(white,sq,supp_bot);
             pawn_attack_table[black][sq] = this->PawnAttackMask(black,sq,supp_bot); 
@@ -18,9 +26,16 @@ public:
     ull bishop_attack_masks[64]; 
     ull rook_attack_masks[64]; 
     ull bishop_attack_tables[64][512]; // [sqaure][occupancies]  
-    ull rook_attack_tables[64][4096];
+    ull rook_attack_tables[64][4096]; 
+    ull piece_bitboards[12]; 
+    ull occupancy[3]; // white, black, both
+    int side; // black or white 
+    int enpessant;
+    int castle;
 
-    AttackSystem(SupportAndUtils &supp_bot){
+
+    AttackSystem(SupportAndUtils &supp_bot){ 
+        ConstantInializations();
         InitLeaperAttacks(supp_bot);
         InitSliderPiecesTables(bishop,supp_bot); 
         InitSliderPiecesTables(rook,supp_bot);
@@ -234,11 +249,6 @@ public:
 int main(){
     SupportAndUtils support; 
     AttackSystem attksys(support);  
-
-    ull occpancy = support.GetOccupancyBoard({c5,f2,g7,b2,g5,e2,e7});  
-    support.PrintBitBoard(occpancy);
-    ull batts = attksys.GetRookAttacks(e5,occpancy); 
-    support.PrintBitBoard(batts);
 
     return 0;
 }
