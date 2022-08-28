@@ -9,7 +9,6 @@
 class SupportAndUtils{
 public:
     
-    const int N = 8; 
     const char *aplhabet;
 
     SupportAndUtils(){
@@ -36,8 +35,8 @@ public:
 
     void PrintBitBoard(ull &bitBoard){ 
         cout<<"\n\n";
-        for(int rank =0;rank<N;rank++){
-            for(int file =0;file<N;file++){
+        for(int rank =0;rank<8;rank++){
+            for(int file =0;file<8;file++){
                 int square = GetSqaure(rank,file);  
                 if(not file) cout<<(8-rank)<<"  ";
                 cout<<(GetBit(bitBoard,square)?1:0)<<' '; // Print bit state 1/0
@@ -84,7 +83,7 @@ public:
     }
 
     int GetSqaure(int rank,int file){
-        return rank*N + file;
+        return rank*8 + file;
     }
 
     void PrintBoardDefFormat(){ 
