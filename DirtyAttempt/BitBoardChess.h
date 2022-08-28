@@ -4,7 +4,7 @@
 class AttackSystem{ 
 
     void ConstantInializations(){
-        side = -1;
+        side = 0;
         castle = 0;
         enpessant = no_sq;
         for(int i =0;i<12;i++) piece_bitboards[i] = 0ull;
@@ -31,7 +31,7 @@ public:
     ull rook_attack_tables[64][4096]; 
     ull piece_bitboards[12]; 
     ull occupancy[3]; // white, black, both
-    int side = - 1; // black or white 
+    int side; // black or white 
     int enpessant = no_sq;
     int castle;
 

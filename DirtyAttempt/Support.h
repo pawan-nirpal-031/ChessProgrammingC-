@@ -105,7 +105,30 @@ public:
     static inline int LeastSigBitIndex(ull board){
         if(board) return NumberOfSetBits((board & -board)-1);
         return -1;
-    } 
+    }  
+
+    void PrintBoard(ull piece_bitboards[],int &side,int &enpassant,int &castle){
+        cout<<"\n";
+        for(int r =0;r<8;r++){
+            for(int f =0;f<8;f++){
+                int sq = GetSqaure(r,f); 
+                int piece = -1; 
+                if(not f) cout<<(8-r)<<"  ";
+                for(int bb_piece=P;bb_piece<=k;bb_piece++){
+                    if(GetBit(piece_bitboards[bb_piece],sq)) piece = bb_piece;
+                }
+                cout<<(piece==-1?".":unicode_pieces[piece])<<' ';
+            }
+            cout<<'\n';
+        }
+        cout<<"\n   a b c d e f g h\n"; 
+        cout<<"\n   Side         : "<<(!side?"white":"black"); 
+        cout<<"\n   Enpassant    : "<<(enpassant!=no_sq?PositionToIndexMap[enpassant]:"none");
+        printf("\n   Castling     : %c%c%c%c\n\n",((WK&castle)?'K':'-')
+                                           ,((WQ&castle)?'Q':'-')
+                                           ,((BK&castle)?'k':'-')
+                                           ,((BQ&castle)?'q':'-'));
+    }
 
     ull GetOccupancyBoard(vector<int>blocking){
         ull occupancy = 0ull; 
@@ -113,6 +136,12 @@ public:
             SetBit(occupancy,x);
         }
         return occupancy;
+    } 
+
+    void GetOccupancyBoardOnGivenBoard(vector<int>blocking,ull &board){
+        for(int &x : blocking){
+            SetBit(board,x);
+        }
     }
 };
 
