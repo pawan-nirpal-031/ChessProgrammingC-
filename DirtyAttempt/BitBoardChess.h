@@ -43,6 +43,43 @@ public:
         InitSliderPiecesTables(bishop,supp_bot); 
         InitSliderPiecesTables(rook,supp_bot);
        // InitMagicNumbers(supp_bot);
+    } 
+
+    void ParseFENString(const string &fen,SupportAndUtils &supp){
+        ConstantInializations();
+        int str_indx =0;
+        for(int rank =0;rank<8;rank++){
+            for(int file =0;file<8;file++){
+                int sq = supp.GetSqaure(rank,file);
+                if((fen[str_indx]>='a' and fen[str_indx]<='z') or (fen[str_indx]>='A' and fen[str_indx]<='Z')){
+                    int piece =  char_piece_encoding[fen[str_indx]];
+                    supp.SetBit(piece_bitboards[piece],sq);
+                    str_indx+=1;
+                } 
+                if(fen[str_indx]>='0' and fen[str_indx]<='9'){
+                    int offset = fen[str_indx]-'0';
+                    int piece = -1; 
+                    for(int piece_bb =0;piece_bb<12;piece_bb++){
+                        if(supp.GetBit(piece_bitboards[piece_bb],sq)){
+                            piece = piece_bb;
+                        }
+                    }
+                    if(piece==-1) file--;
+                    file+=(offset);
+                    str_indx+=1;
+                } 
+                if(fen[str_indx]=='/'){
+                    str_indx+=1;
+                }
+            }
+        }
+        str_indx++; // remove the blank space
+        side = (fen[str_indx]=='w'?white:black);
+        for(;str_indx<fen.length();str_indx++){
+           if(fen[str_indx]!=' ') cout<<fen[str_indx];
+           else cout<<'.';
+        }
+        cout<<"\n\n";
     }
 
     ull PawnAttackMask(int side,int square, SupportAndUtils &supp_bot){      

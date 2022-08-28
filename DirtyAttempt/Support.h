@@ -107,7 +107,7 @@ public:
         return -1;
     }  
 
-    void PrintBoard(ull piece_bitboards[],int &side,int &enpassant,int &castle){
+    void PrintBoard(ull piece_bitboards[],int side,int &enpassant,int &castle){
         cout<<"\n";
         for(int r =0;r<8;r++){
             for(int f =0;f<8;f++){
@@ -142,7 +142,7 @@ public:
         for(int &x : blocking){
             SetBit(board,x);
         }
-    }
+    } 
 };
 
 #endif

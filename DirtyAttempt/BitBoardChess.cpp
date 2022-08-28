@@ -4,17 +4,8 @@
 int main(){
     SupportAndUtils supp; 
     AttackSystem atk(supp);
-    supp.GetOccupancyBoardOnGivenBoard({a2,b2,c2,d2,e2,f2,g2,h2},atk.piece_bitboards[P]); 
-    supp.GetOccupancyBoardOnGivenBoard({b1,g1},atk.piece_bitboards[N]);
-    atk.side = white;
-    atk.enpessant = e3; 
-    atk.castle|=WK;
-    atk.castle|=WQ;
-    atk.castle|=BK;
-    atk.castle|=BQ;
-    supp.PrintBoard(atk.piece_bitboards,atk.side,atk.enpessant,atk.castle); 
-    for(int piece = P;piece<=k;piece++){
-        supp.PrintBitBoard(atk.piece_bitboards[piece]);
-    }
+    string somepos = "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R b KQkq - 0 1 ";
+    atk.ParseFENString(somepos,supp);
+    supp.PrintBoard(atk.piece_bitboards,atk.side,atk.enpessant,atk.castle);
     return 0;
 }

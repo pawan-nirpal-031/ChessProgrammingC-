@@ -17,6 +17,13 @@ enum{
     P,N,B,R,Q,K,p,n,b,r,q,k
 };
 
+const string empty_board = "8/8/8/8/8/8/8/8/ w - - ";
+const string start_positon=  "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1 ";
+const string tricky_position=  "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1 ";
+const string killer_position = "";
+const string cmk_position = "";
+
+
 string ascii_pieces = "PNBRQKpnbrqk"; 
 vector<string>unicode_pieces = {"♙","♘","♗","♖","♕","♔","♟","♞","♝","♜","♛","♚"};
 map<char,int>char_piece_encoding = {
